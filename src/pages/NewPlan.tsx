@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Calendar } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 
 const inputClass =
@@ -55,7 +55,7 @@ export default function NewPlan() {
   }
 
   return (
-    <div className="flex flex-col bg-[#0e0b14] min-h-full page-enter">
+    <div className="flex flex-col bg-[#0e0b14] flex-1 overflow-y-auto page-enter">
       {/* Header */}
       <div
         className="bg-[#160f22] rounded-b-[28px] px-5 pb-6 flex items-center gap-4"
@@ -86,13 +86,20 @@ export default function NewPlan() {
         </Field>
 
         <Field label="Fecha (opcional)">
-          <input
-            type="date"
-            className={inputClass}
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            style={{ colorScheme: 'dark' }}
-          />
+          <div className="relative">
+            <input
+              type="date"
+              className={`${inputClass} appearance-none min-w-0 block pr-11`}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              style={{ colorScheme: 'dark', WebkitAppearance: 'none' }}
+            />
+            <Calendar
+              size={18}
+              color="#c084a8"
+              className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"
+            />
+          </div>
         </Field>
 
         <Field label="Lugar (opcional)">

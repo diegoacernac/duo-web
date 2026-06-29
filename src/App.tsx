@@ -13,7 +13,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="max-w-[430px] mx-auto h-dvh bg-[#0e0b14] relative overflow-hidden flex flex-col">
+        <div className="fixed inset-0 flex justify-center bg-[#07050e]">
+          <div className="w-full max-w-[430px] bg-[#0e0b14] relative overflow-hidden flex flex-col">
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route element={<ProtectedRoute />}>
@@ -27,6 +28,7 @@ export default function App() {
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          </div>
         </div>
       </AuthProvider>
     </BrowserRouter>

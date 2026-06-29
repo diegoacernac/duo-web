@@ -27,17 +27,27 @@ export default function Plans() {
     <div className="flex flex-col bg-[#0e0b14] min-h-full pb-4 page-enter">
       {/* Hero */}
       <div
-        className="bg-[#160f22] rounded-b-[28px] px-5 pb-6"
+        className="bg-[#160f22] rounded-b-[28px] px-5 pb-6 flex items-center justify-between"
         style={{ paddingTop: 'calc(env(safe-area-inset-top, 44px) + 16px)', boxShadow: '0 4px 20px rgba(192,132,168,0.15)' }}
       >
-        <p className="text-[#f5f0eb] text-3xl" style={{ fontFamily: 'serif' }}>Planes</p>
-        <p className="text-[#7c6f85] text-xs tracking-wide mt-1">
-          {loading
-            ? '...'
-            : plans.length === 0
-              ? 'nada por aquí aún'
-              : `${plans.length} plan${plans.length !== 1 ? 'es' : ''}`}
-        </p>
+        <div>
+          <p className="text-[#f5f0eb] text-3xl" style={{ fontFamily: 'serif' }}>Planes</p>
+          <p className="text-[#7c6f85] text-xs tracking-wide mt-1">
+            {loading
+              ? '...'
+              : plans.length === 0
+                ? 'nada por aquí aún'
+                : `${plans.length} plan${plans.length !== 1 ? 'es' : ''}`}
+          </p>
+        </div>
+        <Link
+          to="/plans/new"
+          className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 tappable"
+          style={{ backgroundColor: '#c084a8', ...accentShadow }}
+          aria-label="Nuevo plan"
+        >
+          <Plus size={24} color="#0e0b14" />
+        </Link>
       </div>
 
       <div className="flex flex-col px-4 pt-4 gap-3">
@@ -80,20 +90,6 @@ export default function Plans() {
           ))
         )}
       </div>
-
-      {/* FAB */}
-      <Link
-        to="/plans/new"
-        className="fixed bottom-20 w-14 h-14 rounded-full flex items-center justify-center pop tappable"
-        style={{
-          backgroundColor: '#c084a8',
-          ...accentShadow,
-          right: 'calc(max(50vw - 215px, 0px) + 16px)',
-        }}
-        aria-label="Nuevo plan"
-      >
-        <Plus size={28} color="#0e0b14" />
-      </Link>
     </div>
   )
 }

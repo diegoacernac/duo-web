@@ -52,7 +52,7 @@ export default function PlanDetail() {
   }
 
   return (
-    <div className="flex flex-col bg-[#0e0b14] min-h-full page-enter">
+    <div className="flex flex-col bg-[#0e0b14] flex-1 overflow-y-auto page-enter">
       {/* Header */}
       <div
         className="bg-[#160f22] rounded-b-[28px] px-5 pb-6 flex items-center gap-4"
