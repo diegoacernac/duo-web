@@ -89,7 +89,7 @@ export default function NewPlan() {
           <div className="relative">
             <input
               type="date"
-              className={`${inputClass} appearance-none min-w-0 block pr-11`}
+              className={`${inputClass.replace('h-12', 'py-3.5')} appearance-none min-w-0 block pr-11`}
               value={date}
               onChange={(e) => setDate(e.target.value)}
               style={{ colorScheme: 'dark', WebkitAppearance: 'none' }}

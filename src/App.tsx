@@ -13,7 +13,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="fixed inset-0 flex justify-center bg-[#07050e]">
+        <div className="fixed inset-0 flex justify-center bg-[#0e0b14]">
           <div className="w-full max-w-[430px] bg-[#0e0b14] relative overflow-hidden flex flex-col">
           <Routes>
             <Route path="/login" element={<Login />} />
