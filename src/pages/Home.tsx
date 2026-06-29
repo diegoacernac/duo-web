@@ -66,11 +66,11 @@ export default function Home() {
   const upcomingPlans = plans.filter((p) => p.status === 'pending').slice(0, 5)
 
   return (
-    <div className="flex flex-col bg-[#0e0b14] pb-4">
+    <div className="flex flex-col bg-[#0e0b14] pb-4 page-enter">
       {/* Hero */}
       <div
         className="bg-[#160f22] px-5 pb-6 rounded-b-[28px]"
-        style={{ ...accentShadow, paddingTop: '3rem' }}
+        style={{ ...accentShadow, paddingTop: 'calc(env(safe-area-inset-top, 44px) + 16px)' }}
       >
         <div className="flex items-center justify-between">
           <div>
@@ -102,7 +102,7 @@ export default function Home() {
         {days !== null ? (
           <>
             {/* Días juntos */}
-            <div className="bg-[#1a1525] rounded-3xl p-6 border border-[#2a2035]" style={cardShadow}>
+            <div className="bg-[#1a1525] rounded-3xl p-6 border border-[#2a2035] rise" style={cardShadow}>
               <p className="text-[#7c6f85] text-xs tracking-[0.2em] uppercase mb-1">Días juntos</p>
               <p
                 className="text-[#f5f0eb]"
@@ -116,7 +116,7 @@ export default function Home() {
             </div>
 
             {/* Mini stats */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 rise" style={{ animationDelay: '80ms' }}>
               <div className="flex-1 bg-[#1a1525] rounded-3xl p-5 border border-[#2a2035]" style={cardShadow}>
                 <p className="text-[#7c6f85] text-xs tracking-[0.15em] uppercase mb-2">Planes</p>
                 <p className="text-[#f5f0eb] text-4xl" style={{ fontFamily: 'serif' }}>{totalPlans}</p>
@@ -169,11 +169,11 @@ export default function Home() {
             </Link>
           </div>
         ) : (
-          upcomingPlans.map((item) => (
+          upcomingPlans.map((item, i) => (
             <button
               key={item.id}
-              className="bg-[#1a1525] rounded-3xl overflow-hidden border border-[#2a2035] flex text-left w-full"
-              style={cardShadow}
+              className="bg-[#1a1525] rounded-3xl overflow-hidden border border-[#2a2035] flex text-left w-full rise tappable"
+              style={{ ...cardShadow, animationDelay: `${160 + i * 60}ms` }}
               onClick={() => navigate(`/plans/${item.id}`)}
             >
               <div className="w-1 shrink-0" style={{ backgroundColor: STATUS_COLOR[item.status] }} />
@@ -200,8 +200,8 @@ export default function Home() {
       {/* FAB */}
       <Link
         to="/plans/new"
-        className="fixed bottom-20 right-4 w-14 h-14 rounded-full flex items-center justify-center"
-        style={{ backgroundColor: '#c084a8', boxShadow: '0 4px 20px rgba(192,132,168,0.4)', maxWidth: 56, right: 'calc(50% - 215px + 16px)' }}
+        className="fixed bottom-20 right-4 w-14 h-14 rounded-full flex items-center justify-center pop tappable"
+        style={{ backgroundColor: '#c084a8', boxShadow: '0 4px 20px rgba(192,132,168,0.4)', right: 'calc(max(50vw - 215px, 0px) + 16px)' }}
         aria-label="Nuevo plan"
       >
         <Plus size={28} color="#0e0b14" />

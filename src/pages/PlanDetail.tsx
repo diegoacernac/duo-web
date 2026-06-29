@@ -52,11 +52,11 @@ export default function PlanDetail() {
   }
 
   return (
-    <div className="flex flex-col bg-[#0e0b14] min-h-full">
+    <div className="flex flex-col bg-[#0e0b14] min-h-full page-enter">
       {/* Header */}
       <div
         className="bg-[#160f22] rounded-b-[28px] px-5 pb-6 flex items-center gap-4"
-        style={{ paddingTop: '3rem', boxShadow: '0 4px 20px rgba(192,132,168,0.15)' }}
+        style={{ paddingTop: 'calc(env(safe-area-inset-top, 44px) + 16px)', boxShadow: '0 4px 20px rgba(192,132,168,0.15)' }}
       >
         <button
           onClick={() => navigate(-1)}
@@ -71,7 +71,7 @@ export default function PlanDetail() {
 
       <div className="flex flex-col px-5 pt-5 gap-4 pb-10">
         {/* Card */}
-        <div className="bg-[#1a1525] rounded-2xl p-5 border border-[#2a2035]" style={cardShadow}>
+        <div className="bg-[#1a1525] rounded-2xl p-5 border border-[#2a2035] rise" style={cardShadow}>
           <div className="flex justify-between items-start mb-3">
             <p className="text-[#f5f0eb] text-2xl flex-1 pr-2" style={{ fontFamily: 'serif' }}>
               {plan.title}
@@ -100,14 +100,14 @@ export default function PlanDetail() {
         {plan.status === 'pending' && (
           <div className="flex flex-col gap-2.5 mt-2">
             <button
-              className="rounded-xl py-4 font-semibold text-base border border-[#2a4f3a] text-[#6ecfa8]"
+              className="rounded-xl py-4 font-semibold text-base border border-[#2a4f3a] text-[#6ecfa8] tappable"
               style={{ backgroundColor: '#0d2e22' }}
               onClick={() => updateStatus('done')}
             >
               Marcar como hecho
             </button>
             <button
-              className="rounded-xl py-4 font-semibold text-base border border-[#2a2035] text-[#5a4f65]"
+              className="rounded-xl py-4 font-semibold text-base border border-[#2a2035] text-[#5a4f65] tappable"
               style={{ backgroundColor: '#1a1525' }}
               onClick={() => updateStatus('cancelled')}
             >

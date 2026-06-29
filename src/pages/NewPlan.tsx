@@ -55,11 +55,11 @@ export default function NewPlan() {
   }
 
   return (
-    <div className="flex flex-col bg-[#0e0b14] min-h-full">
+    <div className="flex flex-col bg-[#0e0b14] min-h-full page-enter">
       {/* Header */}
       <div
         className="bg-[#160f22] rounded-b-[28px] px-5 pb-6 flex items-center gap-4"
-        style={{ paddingTop: '3rem', boxShadow: '0 4px 20px rgba(192,132,168,0.15)' }}
+        style={{ paddingTop: 'calc(env(safe-area-inset-top, 44px) + 16px)', boxShadow: '0 4px 20px rgba(192,132,168,0.15)' }}
       >
         <button
           onClick={() => navigate(-1)}

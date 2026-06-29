@@ -83,11 +83,11 @@ export default function Profile() {
     : null
 
   return (
-    <div className="flex flex-col bg-[#0e0b14] pb-4">
+    <div className="flex flex-col bg-[#0e0b14] pb-4 page-enter">
       {/* Hero */}
       <div
         className="bg-[#160f22] rounded-b-[28px] px-5 pb-7 flex flex-col items-center"
-        style={{ paddingTop: '3rem', ...accentShadow }}
+        style={{ paddingTop: 'calc(env(safe-area-inset-top, 44px) + 16px)', ...accentShadow }}
       >
         <div
           className="w-20 h-20 rounded-full flex items-center justify-center mb-3 border border-[#3d2e50]"

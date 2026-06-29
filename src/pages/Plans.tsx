@@ -24,11 +24,11 @@ export default function Plans() {
   useEffect(() => { loadPlans() }, [loadPlans])
 
   return (
-    <div className="flex flex-col bg-[#0e0b14] min-h-full pb-4">
+    <div className="flex flex-col bg-[#0e0b14] min-h-full pb-4 page-enter">
       {/* Hero */}
       <div
         className="bg-[#160f22] rounded-b-[28px] px-5 pb-6"
-        style={{ paddingTop: '3rem', boxShadow: '0 4px 20px rgba(192,132,168,0.15)' }}
+        style={{ paddingTop: 'calc(env(safe-area-inset-top, 44px) + 16px)', boxShadow: '0 4px 20px rgba(192,132,168,0.15)' }}
       >
         <p className="text-[#f5f0eb] text-3xl" style={{ fontFamily: 'serif' }}>Planes</p>
         <p className="text-[#7c6f85] text-xs tracking-wide mt-1">
@@ -53,11 +53,11 @@ export default function Plans() {
             </p>
           </div>
         ) : (
-          plans.map((item) => (
+          plans.map((item, i) => (
             <button
               key={item.id}
-              className="bg-[#1a1525] rounded-3xl overflow-hidden border border-[#2a2035] flex text-left w-full"
-              style={cardShadow}
+              className="bg-[#1a1525] rounded-3xl overflow-hidden border border-[#2a2035] flex text-left w-full rise tappable"
+              style={{ ...cardShadow, animationDelay: `${i * 60}ms` }}
               onClick={() => navigate(`/plans/${item.id}`)}
             >
               <div className="w-1 shrink-0" style={{ backgroundColor: STATUS_COLOR[item.status] }} />
@@ -84,11 +84,11 @@ export default function Plans() {
       {/* FAB */}
       <Link
         to="/plans/new"
-        className="fixed bottom-20 w-14 h-14 rounded-full flex items-center justify-center"
+        className="fixed bottom-20 w-14 h-14 rounded-full flex items-center justify-center pop tappable"
         style={{
           backgroundColor: '#c084a8',
           ...accentShadow,
-          right: 'calc(50% - 215px + 16px)',
+          right: 'calc(max(50vw - 215px, 0px) + 16px)',
         }}
         aria-label="Nuevo plan"
       >
