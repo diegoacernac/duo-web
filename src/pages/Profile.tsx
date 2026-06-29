@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Heart, Calendar, LogOut } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
+import { parseDate } from '@/lib/plans'
 
 const cardShadow = { boxShadow: '0 4px 12px rgba(14,11,20,0.4)' }
 const accentShadow = { boxShadow: '0 4px 20px rgba(192,132,168,0.15)' }
@@ -75,7 +76,7 @@ export default function Profile() {
     : ''
 
   const relationshipDateDisplay = profile?.relationship_start
-    ? new Date(profile.relationship_start).toLocaleDateString('es', {
+    ? parseDate(profile.relationship_start).toLocaleDateString('es', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',

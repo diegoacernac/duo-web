@@ -29,10 +29,20 @@ export const STATUS_COLOR: Record<PlanStatus, string> = {
   cancelled: '#3d3348',
 }
 
+// Parsea una fecha. Una cadena "YYYY-MM-DD" (solo fecha) se interpreta en
+// hora LOCAL para evitar el corrimiento de un día por zona horaria
+// (new Date("2026-06-30") la trataría como medianoche UTC).
+export function parseDate(iso: string): Date {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+    const [y, m, d] = iso.split('-').map(Number)
+    return new Date(y, m - 1, d)
+  }
+  return new Date(iso)
+}
+
 export function formatPlanDate(iso: string | null): string {
   if (!iso) return ''
-  const d = new Date(iso)
-  return d.toLocaleDateString('es', {
+  return parseDate(iso).toLocaleDateString('es', {
     weekday: 'short',
     day: 'numeric',
     month: 'short',

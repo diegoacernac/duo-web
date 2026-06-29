@@ -36,7 +36,9 @@ export default function NewPlan() {
       .insert({
         created_by: user!.id,
         title: title.trim(),
-        date: date || null,
+        // La columna es timestamptz; anclamos al mediodía UTC para que la
+        // fecha no se corra un día al mostrarla en husos negativos (ej. Lima).
+        date: date ? `${date}T12:00:00.000Z` : null,
         place: place.trim() || null,
         description: description.trim() || null,
       })

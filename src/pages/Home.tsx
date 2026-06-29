@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { Heart, PlusCircle, Calendar } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
-import { formatPlanDate, STATUS_BADGE, STATUS_COLOR, STATUS_LABEL, type Plan } from '@/lib/plans'
+import { formatPlanDate, parseDate, STATUS_BADGE, STATUS_COLOR, STATUS_LABEL, type Plan } from '@/lib/plans'
 
 type ProfileInfo = {
   name: string | null
@@ -13,11 +13,11 @@ type ProfileInfo = {
 
 function daysSince(iso: string | null): number | null {
   if (!iso) return null
-  return Math.floor((Date.now() - new Date(iso).getTime()) / (1000 * 60 * 60 * 24))
+  return Math.floor((Date.now() - parseDate(iso).getTime()) / (1000 * 60 * 60 * 24))
 }
 
 function formatRelationshipDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('es', { day: 'numeric', month: 'long', year: 'numeric' })
+  return parseDate(iso).toLocaleDateString('es', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
 const cardShadow = { boxShadow: '0 4px 12px rgba(14,11,20,0.4)' }
