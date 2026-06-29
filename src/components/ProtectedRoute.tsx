@@ -6,7 +6,7 @@ export function ProtectedRoute() {
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-[#0e0b14]">
+      <div className="fixed inset-0 flex items-center justify-center bg-[#0e0b14]">
         <div className="w-6 h-6 rounded-full border-2 border-[#c084a8] border-t-transparent animate-spin" />
       </div>
     )
