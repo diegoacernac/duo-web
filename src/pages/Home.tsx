@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { Heart, PlusCircle, Calendar, Plus } from 'lucide-react'
+import { Heart, PlusCircle, Calendar } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { formatPlanDate, STATUS_BADGE, STATUS_COLOR, STATUS_LABEL, type Plan } from '@/lib/plans'
 
@@ -196,16 +196,6 @@ export default function Home() {
           ))
         )}
       </div>
-
-      {/* FAB */}
-      <Link
-        to="/plans/new"
-        className="fixed bottom-20 right-4 w-14 h-14 rounded-full flex items-center justify-center pop tappable"
-        style={{ backgroundColor: '#c084a8', boxShadow: '0 4px 20px rgba(192,132,168,0.4)', right: 'calc(max(50vw - 215px, 0px) + 16px)' }}
-        aria-label="Nuevo plan"
-      >
-        <Plus size={28} color="#0e0b14" />
-      </Link>
     </div>
   )
 }
